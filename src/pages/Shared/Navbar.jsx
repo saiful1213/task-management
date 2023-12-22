@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
 
    const navItems = <>
-      <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-400" : ""}>Home</NavLink></li>
-      <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "bg-red-400" : ""}>Dashboard</NavLink></li>
-      <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-red-400" : ""}>Login</NavLink></li>
+      <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Home</NavLink></li>
+      <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Dashboard</NavLink></li>
+      <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Login</NavLink></li>
    </>
 
    return (
