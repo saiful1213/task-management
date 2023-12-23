@@ -1,11 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+   const { user, handleLogOut } = useAuth();
+   const navigate = useNavigate();
+
+   const signOut = () => {
+      handleLogOut()
+      toast.success('Logout Success');
+      navigate('/')
+   }
 
    const navItems = <>
       <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Home</NavLink></li>
       <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Dashboard</NavLink></li>
-      <li><NavLink to="/login" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Login</NavLink></li>
+      <li><NavLink to="/register" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Sign Up</NavLink></li>
    </>
 
    return (
@@ -28,7 +38,24 @@ const Navbar = () => {
                </ul>
             </div>
             <div className="navbar-end">
-               <a className="btn">Button</a>
+               {
+                  user?.email ? <>
+                     <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="m-1">
+                           <div className="avatar">
+                              <div className="w-12 rounded-full">
+                                 <img src={user.photoURL} />
+                              </div>
+                           </div>
+                        </div>
+                        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                           <li className="my-2"><a className="text-xl">{user.displayName}</a></li>
+                           <li><button className="btn btn-warning font-bold text-xl" onClick={signOut}>Log Out</button></li>
+                        </ul>
+                     </div>
+                  </> : <Link to="/login" className="btn btn-secondary">Login</Link>
+               }
+
             </div>
          </div>
       </div>
