@@ -14,7 +14,7 @@ const Navbar = () => {
 
    const navItems = <>
       <li><NavLink to="/" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Home</NavLink></li>
-      <li><NavLink to="/dashboard" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Dashboard</NavLink></li>
+      <li><NavLink to="dashboard" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Dashboard</NavLink></li>
       <li><NavLink to="/register" className={({ isActive }) => isActive ? "bg-red-300" : ""}>Sign Up</NavLink></li>
    </>
 
