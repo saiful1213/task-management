@@ -17,7 +17,9 @@ const MyTask = () => {
       }
    })
 
-   if (isLoading) return <p>Loading....</p>
+   if (isLoading) {
+      return <p>Loading....</p>
+   }
 
    const handleDelete = id => {
       Swal.fire({
@@ -50,7 +52,7 @@ const MyTask = () => {
             <div>
                <h1 className="text-2xl font-bold text-center">Todo</h1>
                {
-                  data.map(todo => {
+                  data?.map(todo => {
                      const { _id, title, deadline, category, description } = todo;
                      return (
                         <div key={_id} className="border m-5 bg-pink-200 py-4 px-3 rounded-lg">
