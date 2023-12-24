@@ -4,14 +4,11 @@ import RegisterImg from "../../assets/registerImg.avif"
 import { toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../../Hooks/useAuth";
-// import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
    const { createUser, googleSignin, updateUserProfile } = useAuth();
-   // console.log(createUser)
    const navigate = useNavigate();
    const imgbbApi = 'aa066f92691f88d7e205506379902f5f';
-   // const axiosPublic = useAxiosPublic();
 
    const handleRegister = async event => {
       event.preventDefault();
@@ -33,13 +30,8 @@ const Register = () => {
          .then(() => {
             updateUserProfile(name, data.data.display_url)
                .then(() => {
-                  // const userInfo = { name, email };
-                  // axiosPublic.post('/users', userInfo)
-                  // .then(() => {
                   toast.success('account created successfully')
                   navigate('/')
-                  // })
-
                })
          })
          .catch((error) => {
@@ -51,13 +43,8 @@ const Register = () => {
       googleSignin()
          .then(result => {
             console.log(result.user)
-            // const userInfo = { name: result?.user?.displayName, email: result?.user?.email };
-            // axiosPublic.post('/users', userInfo)
-            // .then((res) => {
-            // console.log(res.data)
             toast.success('account created successfully')
             navigate('/')
-            // })
          })
          .catch(err => {
             console.log(err.message)
@@ -65,11 +52,11 @@ const Register = () => {
    }
 
    return (
-      <section className="bg-gray-50 dark:bg-gray-900 flex items-center">
-         <div className="w-1/2">
+      <section className="bg-gray-50 dark:bg-gray-900 flex flex-col md:flex-row px-4 items-center">
+         <div className="md:w-1/3 lg:w-1/2">
             <img src={RegisterImg} alt="RegisterImg" />
          </div>
-         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 w-1/2">
+         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto xl:h-screen lg:py-0 md:w-2/3 lg:w-1/2">
             <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                   <h1 className="text-2xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">

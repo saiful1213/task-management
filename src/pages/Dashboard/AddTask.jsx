@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddTask = () => {
+   const navigate = useNavigate();
    const axiosPublic = useAxiosPublic();
-   const { register, handleSubmit } = useForm();
+   const { register, handleSubmit, reset } = useForm();
 
 
    const onSubmit = data => {
@@ -13,6 +15,8 @@ const AddTask = () => {
             console.log(res.data)
             if (res.data.insertedId) {
                toast.success('your task added successfully')
+               reset();
+               navigate('/dashboard/myTask')
             }
          })
    };
@@ -23,7 +27,7 @@ const AddTask = () => {
          <h1 className="text-4xl font-bold text-center">Add Your Task</h1>
 
 
-         <form onSubmit={handleSubmit(onSubmit)} className="mt-12 w-1/2 mx-auto">
+         <form onSubmit={handleSubmit(onSubmit)} className="mt-12 mx-4 md:w-1/2 md:mx-auto">
 
             <div className="form-control">
                <label className="label">

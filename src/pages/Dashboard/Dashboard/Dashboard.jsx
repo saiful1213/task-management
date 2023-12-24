@@ -1,6 +1,11 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
+import { FaCirclePlus } from "react-icons/fa6";
+import { CgProfile } from "react-icons/cg";
+import { FaTasks } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { CgLogOut } from "react-icons/cg";
 
 const Dashboard = () => {
    const { handleLogOut } = useAuth();
@@ -19,18 +24,21 @@ const Dashboard = () => {
 
                <ul className="gap-1 flex lg:flex-col">
                   <li className="font-semibold w-full">
-                     <Link to="/dashboard/userHome"><button className="w-full btn btn-secondary">User Profile</button></Link>
+                     <Link to="/dashboard/userHome"><button className="w-full btn btn-secondary"><CgProfile className="text-xl"/>User Profile</button></Link>
                   </li>
                   <li className="font-semibold w-full">
-                     <Link to="/dashboard/addTask"><button className="w-full btn btn-secondary">Add Task</button></Link>
+                     <Link to="/dashboard/addTask"><button className="w-full btn btn-secondary"><FaCirclePlus className="text-xl" />Add Task</button></Link>
+                  </li>
+                  <li className="font-semibold w-full">
+                     <Link to="/dashboard/myTask"><button className="w-full btn btn-secondary"><FaTasks className="text-xl" />My Tasks</button></Link>
                   </li>
                </ul>
 
 
                {/* shared links */}
-               <div className="flex lg:flex-col gap-1">
-                  <Link to='/'><button className="w-full btn btn-secondary mb-2">Home</button></Link>
-                  <button className="w-full btn btn-secondary mb-2" onClick={signOut}>Logout</button>
+               <div className="hidden md:flex lg:flex-col gap-1">
+                  <Link to='/'><button className="w-full btn btn-secondary mb-2"><FaHome className="text-xl"/>Home</button></Link>
+                  <button className="lg:w-full btn btn-secondary mb-2" onClick={signOut}><CgLogOut className="text-xl"/>Logout</button>
                </div>
             </div>
             <div className="flex-1">
